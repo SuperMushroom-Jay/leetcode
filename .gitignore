@@ -1,0 +1,3 @@
+#忽略java目录下的.idea和out目录
+java/.idea
+out/
