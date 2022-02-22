@@ -54,29 +54,30 @@ public class Solution {
 //            }
 //        }
 //        return sumNumber;
-        int sumNumber=0;
         int preNumber=getNumber(s.charAt(0));
         int nowNumber=0;
-        System.out.println("len="+s.length());
+        int sumNumber=0;
+        if(s.length()==1)
+            return preNumber;
+        //System.out.println("len="+s.length());
         for(int i=1;i<s.length();i++){
             nowNumber=getNumber(s.charAt(i));
-            System.out.println("i="+i);
+            //System.out.println("i="+i);
+            //特殊数
             if(preNumber<nowNumber){
-                System.out.println(sumNumber+"+"+nowNumber+"-"+preNumber+"="+(sumNumber+nowNumber-preNumber)+",  i="+i);
+                //System.out.println(sumNumber+"+"+nowNumber+"-"+preNumber+"="+(sumNumber+nowNumber-preNumber)+",  i="+i);
                 sumNumber+=nowNumber-preNumber;
-                i++;
-                if(i>s.length())
-                    break;
+                i=i+1;
+                if(i>=s.length())  break;
                 preNumber=getNumber(s.charAt(i));
 
-            }else{
-                System.out.println(sumNumber+"+"+preNumber+"="+(sumNumber+preNumber)+",  i="+i);
+            }else{  //普通数
+                //System.out.println(sumNumber+"+"+preNumber+"="+(sumNumber+preNumber)+",  i="+i);
                 sumNumber+=preNumber;
                 preNumber=nowNumber;
             }
-            if(i==s.length()-1){
-                sumNumber+=preNumber;
-            }
+            //若最后一个是普通数，则再加一次preNumber
+            if(i==s.length()-1) sumNumber+=preNumber;
         }
         return sumNumber;
     }
@@ -94,7 +95,7 @@ public class Solution {
     }
     public static void main(String[] args){
         Solution solution=new Solution();
-        System.out.println(solution.romanToInt(   "MCMXCIV"
+        System.out.println(solution.romanToInt(   "XV"
         ));
     }
 }
